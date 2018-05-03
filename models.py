@@ -22,7 +22,11 @@ class EmployeeModel(Base):
     employee_id = Column(Integer,nullable=False,primary_key=True)
     first_name = Column(Unicode,nullable=False)
     last_name = Column(Unicode,nullable=False)
-    department_id = Column(Integer,nullable=False)
+    department_id = Column(Integer,
+        ForeignKey('department.department_id'),nullable=False)
+    # department_id = Column(Integer,nullable=False)
+    # hardwares = relationship('HardwareModel',
+    #     backref='hardware',lazy=True)
 
 class DepartmentModel(Base):
     __tablename__ = 'department'
